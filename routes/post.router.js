@@ -6,13 +6,13 @@ const { multer, sendUploadToGCS } = require('../helpers/images');
 
 router.post('/create', loginAuthentication, multer.single('image'), sendUploadToGCS, createPost);
 router.get('/user', loginAuthentication, getPost);
-router.get('/', loginAuthentication, getAllPost);
+router.get('/', getAllPost);
 router.patch('/like', loginAuthentication, updateLike);
 router.patch('/dislike', loginAuthentication, updateDislike);
 router.delete('/delete/:id', loginAuthentication, deletePost);
 
 router.post('/:id/comment', loginAuthentication, addComment);
-router.get('/:id/comments', loginAuthentication, getComment);
+router.get('/:id/comments', getComment);
 router.delete('/comment/delete/:id', loginAuthentication, deleteComment);
 
 module.exports = router;
